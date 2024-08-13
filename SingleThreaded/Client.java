@@ -1,14 +1,14 @@
 
 import java.io.BufferedReader;
-import java.net.InetAddress;
-import java.net.Socket;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.Socket;
 
 
 public class Client {
-    public void run() {
+    public void run() throws IOException {
         int port = 8010;
         InetAddress address = InetAddress.getByName("localhost");
         Socket socket = new Socket(address, port);
@@ -19,6 +19,9 @@ public class Client {
         toSocket.println("hello from the client");
         String line = fromSocket.readLine();
         System.out.println("Response from the socket is: " + line);
+        toSocket.close();
+        fromSocket.close();
+        socket.close();
     }
     public static void main(String[] args) {
         try {
