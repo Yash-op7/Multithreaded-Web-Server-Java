@@ -12,7 +12,7 @@ public class Server {
         return (clientSocket) -> {
             try {
                 PrintWriter toClient = new PrintWriter(clientSocket.getOutputStream());
-                toClient.println("Hellow from the server");
+                toClient.println("Hello from the server");
                 toClient.close();
                 clientSocket.close();
             } catch (IOException e) {
